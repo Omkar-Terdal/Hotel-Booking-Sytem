@@ -1,4 +1,3 @@
-Apologies for that! Here's the corrected formatting for the README:
 
 ---
 
@@ -11,8 +10,8 @@ The Hotel Management System is a software application designed to streamline and
 - **Reservation Management**: Allow guests to make reservations for rooms online or through the front desk.
 - **Guest Check-in/Check-out**: Efficiently manage guest arrivals and departures.
 - **Room Allocation**: Assign rooms to guests based on their preferences and availability.
-- **Billing**: Generate bills for guest stays, meals, and additional services.
-- **Reporting**: Generate reports on occupancy rates, revenue, and other key metrics.
+- **Billing**: Generate bills for guest stays, and additional services.
+- **Reporting**: Generate reports on occupancy rates.
 - **Admin Dashboard**: Provide administrators with a dashboard to monitor and manage hotel operations.
 
 ## Technologies Used
@@ -59,14 +58,9 @@ The Hotel Management System is a software application designed to streamline and
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
 For inquiries, please contact [Omkar Terdal](mailto:terdalomkar@gmail.com).
 
 ---
-
-This format should display properly and provide a clear structure for your README file. Let me know if you need further assistance!
