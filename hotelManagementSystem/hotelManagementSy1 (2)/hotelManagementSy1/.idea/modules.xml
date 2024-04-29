@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hotelManagementSy/hotelManagementSy/hotelManagementSy/hotelManagementSy.iml" filepath="$PROJECT_DIR$/hotelManagementSy/hotelManagementSy/hotelManagementSy/hotelManagementSy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hotelManagementSy1.iml" filepath="$PROJECT_DIR$/.idea/hotelManagementSy1.iml" />
+    </modules>
+  </component>
+</project>

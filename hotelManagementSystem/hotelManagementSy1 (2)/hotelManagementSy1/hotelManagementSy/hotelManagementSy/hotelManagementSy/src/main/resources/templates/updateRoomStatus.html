@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Room Status</title>
+</head>
+<body>
+<h1>Update Room Status</h1>
+<form action="/hotel/updateRoomStatus" method="post">
+    <!-- Include form fields for room ID and new status -->
+    <label for="roomId">Room ID:</label>
+    <input type="text" id="roomId" name="roomId"><br><br>
+
+    <label for="newStatus">New Status:</label>
+    <select id="newStatus" name="newStatus">
+        <option value="AVAILABLE">Available</option>
+        <option value="OCCUPIED">Occupied</option>
+        <option value="UNDER_MAINTENANCE">Under Maintenance</option>
+    </select><br><br>
+
+    <input type="submit" value="Update Room Status">
+</form>
+</body>
+</html>

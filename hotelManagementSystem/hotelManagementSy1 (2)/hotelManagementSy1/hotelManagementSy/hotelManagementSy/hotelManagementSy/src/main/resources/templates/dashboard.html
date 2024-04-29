@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom styles here -->
+    <style>
+        /* Custom styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: #AAD7D9;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+            margin: auto;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0;
+        }
+        .table th,
+        .table td {
+            padding: 10px;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+        .table th {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-weight: bold;
+            text-align: center;
+        }
+        .table td {
+            text-align: center;
+        }
+        .logout-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+        .btn-cancel,
+        .btn-print {
+            margin-right: 5px;
+        }
+        .confirmed {
+            color: green;
+        }
+        /* Custom styles */
+        .confirmed button {
+            color: #fff;
+            background-color: green;
+            border-color: green;
+        }
+
+        .confirmed button:hover {
+            background-color: darkgreen;
+            border-color: darkgreen;
+        }
+
+        .rejected {
+            color: red;
+        }
+
+        .add-room-section {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-room-section h3 {
+            color: #333;
+        }
+
+        .add-room-section .form-group {
+            margin-bottom: 20px;
+        }
+
+        .add-room-section label {
+            font-weight: bold;
+        }
+
+        .add-room-section button[type="submit"] {
+            margin-top: 10px;
+        }
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0; /* Remove default body margin */
+            font-family: sans-serif; /* Choose a font family you like */
+        }
+
+        header {
+            background-color: #343a40; /* Dark blue header */
+            color: #fff; /* White text */
+            padding: 20px; /* Add some padding */
+            text-align: center; /* Center the content */
+        }
+
+        h1 {
+            margin: 0; /* Remove default heading margin */
+        }
+
+        nav {
+            background-color: #007bff; /* Blue navigation bar */
+            border-bottom: 1px solid #ccc; /* Add a border to the bottom */
+            padding: 10px; /* Add some padding */
+        }
+
+        nav ul {
+            list-style: none; /* Remove default list style */
+            margin: 0; /* Remove default list margin*/
+            padding: 0; /* Remove default list padding*/
+        }
+
+        nav li {
+            display: inline-block; /* Display list items inline */
+            margin-right: 20px; /* Add some margin between list items */
+        }
+
+        nav a {
+            color: #fff; /* White text for links */
+            text-decoration: none; /* Remove underline from links */
+            font-weight: bold; /* Make link text bold */
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Optional: Add margin between buttons */
+        .action-buttons button {
+            margin: 5px;
+        }
+        nav {
+            background: linear-gradient(to right, #85D8CE, #E3F8FF);
+         /* Classic Blue background color */
+            color: #fff; /* White text color */
+            padding: 10px; /* Add some padding */
+        }
+
+        nav a {
+            color: #fff; /* White text color for links */
+            text-decoration: none; /* Remove underline from links */
+            font-weight: bold; /* Make link text bold */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        nav a:hover {
+            color: #f0f0f0; /* Lighter text color on hover */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="toggleBookedRooms()">Booked Rooms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="toggleAddRoom()">Add Rooms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addEmployee" target="_blank">Add Employee</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link logout-link" href="/login">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="bookedRoomsTable" style="display: none;">
+    <h3 class="text-center mb-3">Booked Rooms</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Room Type</th>
+                <th>Number of Rooms</th>
+                <th>Price</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate over booked rooms and generate rows -->
+            <tr th:each="room : ${bookedRooms}">
+                <td th:text="${room.id}"></td>
+                <td th:text="${room.name}"></td>
+                <td th:text="${room.email}"></td>
+                <td th:text="${room.phone}"></td>
+                <td th:text="${room.checkin}"></td>
+                <td th:text="${room.checkout}"></td>
+                <td th:text="${room.roomType}"></td>
+                <td th:text="${room.numberOfRooms}"></td>
+                <td th:text="${room.pricePerRoom}"></td>
+                <td th:text="${room.totalPrice}"></td>
+                <!-- Populate status -->
+                <td th:class="${room.status eq 'Confirmed'} ? 'confirmed' : (${room.status eq 'Rejected'} ? 'rejected' : '')">
+                    <span th:text="${room.status}"></span>
+                </td>
+                <td class="action-buttons">
+                    <!-- Confirm Button -->
+                    <form action="/confirm-reservation" method="post" class="confirmed">
+                        <input type="hidden" name="reservationId" th:value="${room.id}" />
+                        <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+                    </form>
+
+                    <form action="/reject-reservation" method="post" class="d-inline">
+                        <input type="hidden" name="reservationId" th:value="${room.id}" />
+                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                    </form>
+
+                    <a href="/payment" class="btn btn-primary btn-block">Make Payment</a>
+                    <!-- Print Receipt Form - Conditionally show if payment status is 'Paid' -->
+                    <form action="/invoice" method="get" class="d-inline" >
+                        <input type="hidden" name="reservationId" th:value="${room.id}" />
+                        <button type="submit" class="btn btn-info btn-sm btn-print">Print Receipt</button>
+                    </form>
+
+                    <!-- Cancel Booking Form -->
+                    <form action="/cancel-booking" method="post" class="d-inline">
+                        <input type="hidden" name="reservationId" th:value="${room.id}" />
+                        <button type="submit" class="btn btn-danger btn-sm btn-cancel">Cancel</button>
+                    </form>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Room Section -->
+<div class="container mt-5">
+    <div id="addRoomSection" class="add-room-section">
+        <h3 class="text-center mb-3">Add Room</h3>
+        <form id="addRoomForm" action="/add-room" method="post">
+            <div class="form-group">
+                <label for="roomId">Room ID:</label>
+                <input type="text" class="form-control" id="roomId" name="roomId" required>
+            </div>
+            <div class="form-group">
+                <label for="roomType">Room Type:</label>
+                <select class="form-control" id="roomType" name="roomType" required>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Suite">Suite</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Room</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    let bookedRoomsTable = document.getElementById("bookedRoomsTable");
+    let addRoomSection = document.getElementById("addRoomSection");
+
+    function toggleBookedRooms() {
+        bookedRoomsTable.style.display = bookedRoomsTable.style.display === "none" ? "block" : "none";
+    }
+
+    function toggleAddRoom() {
+        // Ensure bookedRoomsTable visibility is considered before showing the add room section
+        if (bookedRoomsTable.style.display === "block") {
+            addRoomSection.style.display = "none";
+        } else {
+            addRoomSection.style.display = "block";
+        }
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/cjs/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Booking</title>
+</head>
+<body>
+<h1>Create Booking</h1>
+<form action="/hotel/createBooking" method="post">
+<!-- Include form fields for booking details -->
+<label for="guestName">Guest Name:</label>
+<input type="text" id="guestName" name="guestName"><br><br>
+
+<label for="checkInDate">Check-In Date:</label>
+<input type="date" id="checkInDate" name="checkInDate"><br><br>
+
+<label for="checkOutDate">Check-Out Date:</label>
+<input type="date" id="checkOutDate" name="checkOutDate"><br><br>
+
+<input type="submit" value="Create Booking">
+</form>
+</body>
+</html>
