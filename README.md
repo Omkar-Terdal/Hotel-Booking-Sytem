@@ -17,18 +17,23 @@ The Hotel Management System is a software application designed to streamline and
 **ScreenShots** :
 
 Login
+
 ![image](https://github.com/Omkar-Terdal/Hotel-Booking-Sytem/assets/127241502/d2072fca-4d3e-49e5-8320-ffdcb7ec8d8d)
 
 Register
+
 ![image](https://github.com/Omkar-Terdal/Hotel-Booking-Sytem/assets/127241502/ebd8e94a-a849-4637-944b-8e8ae0477174)
 
 Customer Dashboard:
+
 ![image](https://github.com/Omkar-Terdal/Hotel-Booking-Sytem/assets/127241502/cb1ccb15-a3db-42c4-84f6-77b7e596e39f)
 
 Reservation 
+
 ![image](https://github.com/Omkar-Terdal/Hotel-Booking-Sytem/assets/127241502/f534c436-df20-4b61-9d13-26406da7cfd4)
 
 Staff login 
+
 ![image](https://github.com/Omkar-Terdal/Hotel-Booking-Sytem/assets/127241502/5ae4d0f2-b144-4b28-8b3d-a39a908949cb)
 
 
